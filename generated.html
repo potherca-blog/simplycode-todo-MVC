@@ -1,13 +1,12 @@
-<!doctype html>
+<!DOCTYPE HTML>
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Template • TodoMVC</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/todomvc-app-css@2.4.3/index.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/todomvc-common@1.0.5/base.css">
     <!-- Component CSS -->
     <style>
+      /* TodoMvcStyles */
+      @import "https://cdn.jsdelivr.net/npm/todomvc-app-css@2.4.3/index.css";
+      @import "https://cdn.jsdelivr.net/npm/todomvc-common@1.0.5/base.css";
 
     </style>
     <!-- /Component CSS -->
@@ -17,6 +16,8 @@
     </style>
     <!-- /Page CSS -->
     <!-- Head HTML -->
+    <!-- title -->
+    <title data-simply-field="pageTitle">Template • TodoMVC</title>
 
     <!-- /Head HTML -->
     <script>
@@ -48,7 +49,8 @@
           /* Routes */
           routes: {
             "/" : function (params) {
-              editor.pageData.page = 'TodoMVC'
+              editor.pageData.page = 'TodoMvcPage'
+              editor.pageData.pageTitle = 'SimplyCode • TodoMVC'
             }
 
           }
@@ -71,7 +73,14 @@
 
     <!-- /Body HTML -->
     <!-- Component HTML templates -->
-    <template id="footer">
+    <template id="TodoMvc">
+      <section class="todoapp">
+      <simply-render rel="TodoMvcHeader"></simply-render>
+      <simply-render rel="TodoMvcMain"></simply-render>
+      <simply-render rel="TodoMvcFooter"></simply-render>
+    </section>
+    </template>
+    <template id="TodoMvcFooter">
       <!-- This footer should be hidden by default and shown when there are todos -->
     <footer class="footer">
       <!-- This should be `0 items left` by default -->
@@ -87,14 +96,14 @@
     </footer>
 
     </template>
-    <template id="header">
+    <template id="TodoMvcHeader">
       <header class="header">
       <h1>todos</h1>
       <input class="new-todo" placeholder="What needs to be done?" autofocus>
     </header>
 
     </template>
-    <template id="main">
+    <template id="TodoMvcMain">
       <!-- This section should be hidden by default and shown when there are todos -->
     <section class="main">
       <input id="toggle-all" class="toggle-all" type="checkbox">
@@ -122,13 +131,6 @@
     </section>
 
     </template>
-    <template id="todoapp">
-      <section class="todoapp">
-      <simply-render rel="header"></simply-render>
-      <simply-render rel="main"></simply-render>
-      <simply-render rel="footer"></simply-render>
-    </section>
-    </template>
     <!-- /Component HTML templates -->
     <header data-simply-path="/" data-simply-field="header" data-simply-content="template" data-simply-default-value="Header">
       <template data-simply-template='Header' rel="header"></template>
@@ -138,8 +140,8 @@
     </nav>
     <div class="main" data-simply-field="page" data-simply-content="template">
     <!-- Page HTML templates -->
-    <template data-simply-template="index">
-      <simply-render rel="todoapp"></simply-render>
+    <template data-simply-template="TodoMvcPage">
+      <simply-render rel="TodoMvc"></simply-render>
 
     <footer class="info">
       <p>Double-click to edit a todo</p>
